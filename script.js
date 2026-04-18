@@ -229,7 +229,7 @@ async function fetchGitHubProjects() {
     container.innerHTML = `<div class="col-span-full text-center py-12 text-[#00eaff]">FETCHING FROM GITHUB...</div>`
     
     try {
-        const res = await fetch('https://api.github.com/users/DOMBNC/repos?sort=updated&per_page=9')
+        const res = await fetch('https://api.github.com/users/DOMBNC/repos?sort=updated&per_page=100')
         
         if (!res.ok) throw new Error('GitHub API rate limit or user not found')
         
