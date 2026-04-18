@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="DOMBNC — Cybersecurity Portfolio | Pentester | Bug Bounty Hunter">
     <title>DOMBNC • SYSTEM ONLINE</title>
-    <!-- Three.js CDN -->
+    <!-- Three.js CDN (r134 — battle-tested for interactive particle systems) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <!-- Tailwind CDN -->
+    <!-- Tailwind CDN for clean, responsive, neon styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -25,16 +25,21 @@
         <div class="text-[#00eaff] text-xl tracking-[4px]">SECURE • ENCRYPTED • LIVE</div>
     </div>
 
-    <!-- BACKGROUND CANVASES -->
-    <canvas id="matrix"></canvas>
-    <canvas id="three"></canvas>
+    <!-- MATRIX RAIN CANVAS (2D classic hacker rain) -->
+    <canvas id="matrix" width="1920" height="1080"></canvas>
+    
+    <!-- THREE.JS 3D PARTICLE NETWORK CANVAS -->
+    <canvas id="three" width="1920" height="1080"></canvas>
 
     <!-- SCANLINE OVERLAY -->
     <div class="scanline"></div>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN CONTENT WRAPPER -->
     <div class="relative z-10 max-w-screen-2xl mx-auto px-6 py-8 min-h-screen flex flex-col">
+
+        <!-- HEADER / HERO -->
         <header class="flex justify-between items-start mb-12">
+            <!-- Left: System Status Panel (fixed on large screens) -->
             <div id="status-panel" class="neon-panel hidden lg:flex flex-col gap-6 p-6 w-80 bg-black/70 rounded-2xl text-sm">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-2">
@@ -45,6 +50,7 @@
                 </div>
                 
                 <div class="space-y-5">
+                    <!-- Recon -->
                     <div>
                         <div class="flex justify-between text-[#00eaff] mb-1">
                             <span>RECON PIPELINE</span>
@@ -54,6 +60,8 @@
                             <div class="h-full w-[87%] bg-[#00eaff] animate-pulse"></div>
                         </div>
                     </div>
+                    
+                    <!-- Scanning -->
                     <div>
                         <div class="flex justify-between text-[#00ff9f] mb-1">
                             <span>PORT SCANNING</span>
@@ -63,6 +71,8 @@
                             <div id="scan-bar" class="h-full bg-[#00ff9f] transition-all duration-700"></div>
                         </div>
                     </div>
+                    
+                    <!-- Exploit -->
                     <div class="flex items-center justify-between">
                         <span class="text-[#00eaff]">EXPLOIT FRAMEWORK</span>
                         <div class="flex items-center gap-2">
@@ -70,6 +80,8 @@
                             <span class="text-2xl">⚡</span>
                         </div>
                     </div>
+                    
+                    <!-- Global threat level -->
                     <div class="pt-4 border-t border-[#00ff9f]/30">
                         <div class="flex justify-between text-xs mb-2">
                             <span>GLOBAL THREAT LEVEL</span>
@@ -82,68 +94,111 @@
                         </div>
                     </div>
                 </div>
+                
                 <div onclick="openTerminal()" class="mt-auto cursor-pointer flex items-center justify-center gap-2 py-3 border border-[#00eaff] hover:bg-[#00eaff]/10 rounded-xl text-[#00eaff] text-center transition-colors">
-                    <span class="text-xl">⌘</span> OPEN TERMINAL
+                    <span class="text-xl">⌘</span>
+                    OPEN TERMINAL
                 </div>
             </div>
 
+            <!-- Hero -->
             <div class="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left pt-8 lg:pt-0">
                 <div class="text-8xl lg:text-[10rem] leading-none glitch font-bold tracking-[-4px]" data-text="DOMBNC">DOMBNC</div>
                 <p class="text-2xl lg:text-4xl text-[#00eaff] mt-2 tracking-[6px]">CYBERSECURITY • PENTESTER • BUG BOUNTY HUNTER</p>
+                
+                <!-- Typing animation -->
                 <div id="typing" class="mt-6 text-2xl lg:text-3xl text-[#00ff9f]/80 h-10 flex items-center font-light tracking-widest"></div>
+                
                 <div class="flex gap-6 mt-12">
-                    <button onclick="document.getElementById('projects-section').scrollIntoView({ behavior: 'smooth' })" class="neon-panel px-8 py-4 text-xl hover:bg-[#00ff9f]/10 transition-colors flex items-center gap-3">
-                        VIEW PROJECTS <span class="text-3xl rotate-45">→</span>
+                    <button onclick="document.getElementById('projects-section').scrollIntoView({ behavior: 'smooth' })" 
+                            class="neon-panel px-8 py-4 text-xl hover:bg-[#00ff9f]/10 transition-colors flex items-center gap-3">
+                        VIEW PROJECTS
+                        <span class="text-3xl rotate-45">→</span>
                     </button>
-                    <button onclick="openTerminal()" class="border border-[#00eaff] px-8 py-4 text-xl text-[#00eaff] hover:bg-[#00eaff]/10 transition-colors">
+                    
+                    <button onclick="openTerminal()" 
+                            class="border border-[#00eaff] px-8 py-4 text-xl text-[#00eaff] hover:bg-[#00eaff]/10 transition-colors">
                         OPEN TERMINAL
                     </button>
                 </div>
+                
+                <!-- Subtle world map hint (SVG lines) -->
                 <div class="hidden xl:block absolute bottom-12 right-12 opacity-20">
                     <svg width="240" height="120" viewBox="0 0 240 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M30 60 Q80 30 120 70 Q160 40 210 80" stroke="#00ff9f" stroke-width="1.5" stroke-dasharray="4 3"/>
-                        <circle cx="30" cy="60" r="4" fill="#00ff9f"/><circle cx="120" cy="70" r="4" fill="#00eaff"/><circle cx="210" cy="80" r="4" fill="#00ff9f"/>
+                        <circle cx="30" cy="60" r="4" fill="#00ff9f"/>
+                        <circle cx="120" cy="70" r="4" fill="#00eaff"/>
+                        <circle cx="210" cy="80" r="4" fill="#00ff9f"/>
                     </svg>
                 </div>
             </div>
 
+            <!-- Right side branding -->
             <div class="hidden lg:flex flex-col items-end text-xs tracking-widest gap-1">
                 <div class="neon-panel px-4 py-2 text-[#00eaff]">0xDEADBEEF</div>
                 <div class="text-[#00ff9f]/60">EST. 2022 • LIVE FROM SHADOWNET</div>
             </div>
         </header>
 
+        <!-- ABOUT SECTION -->
         <section class="mb-24 max-w-4xl mx-auto lg:mx-0">
-            <h2 class="text-4xl mb-6 flex items-center gap-3"><span class="text-5xl">01</span> <span class="glitch" data-text="ABOUT">ABOUT</span></h2>
+            <h2 class="text-4xl mb-6 flex items-center gap-3">
+                <span class="text-5xl">01</span>
+                <span class="glitch" data-text="ABOUT">ABOUT</span>
+            </h2>
             <div class="neon-panel p-8 text-xl leading-relaxed max-w-3xl">
-                Elite penetration tester and bug bounty hunter with a focus on high-impact web exploitation, automated reconnaissance pipelines, and zero-day research. I turn complex attack surfaces into clean POCs and live exploits. Currently hunting on HackerOne, Intigriti, and private programs.<br><br>
-                <span class="text-[#00eaff]">Specialties:</span> Web application security • API abuse • Business logic flaws • Automation at scale • Red team tooling
+                Elite penetration tester and bug bounty hunter with a focus on high-impact web exploitation, 
+                automated reconnaissance pipelines, and zero-day research. 
+                I turn complex attack surfaces into clean POCs and live exploits. 
+                Currently hunting on HackerOne, Intigriti, and private programs.
+                <br><br>
+                <span class="text-[#00eaff]">Specialties:</span> Web application security • API abuse • Business logic flaws • 
+                Automation at scale • Red team tooling
             </div>
         </section>
 
+        <!-- PROJECTS SECTION -->
         <section id="projects-section" class="mb-24">
-            <h2 class="text-4xl mb-8 flex items-center gap-3"><span class="text-5xl">02</span> <span class="glitch" data-text="PROJECTS">PROJECTS</span></h2>
-            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            <h2 class="text-4xl mb-8 flex items-center gap-3">
+                <span class="text-5xl">02</span>
+                <span class="glitch" data-text="PROJECTS">PROJECTS</span>
+            </h2>
+            
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Populated dynamically via GitHub API -->
+            </div>
         </section>
 
+        <!-- SKILLS GRID -->
         <section class="mb-24">
-            <h2 class="text-4xl mb-8 flex items-center gap-3"><span class="text-5xl">03</span> <span class="glitch" data-text="SKILLS">SKILLS</span></h2>
+            <h2 class="text-4xl mb-8 flex items-center gap-3">
+                <span class="text-5xl">03</span>
+                <span class="glitch" data-text="SKILLS">SKILLS</span>
+            </h2>
+            
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Web Security -->
                 <div class="neon-panel p-6 text-center hover:scale-105 transition-transform">
                     <div class="text-6xl mb-4">🛡️</div>
                     <h3 class="text-3xl mb-2 text-[#00eaff]">WEB SECURITY</h3>
                     <p class="text-sm opacity-75">XSS • SQLi • CSRF • IDOR • SSRF • RCE • API Pentesting</p>
                 </div>
+                
+                <!-- Recon -->
                 <div class="neon-panel p-6 text-center hover:scale-105 transition-transform">
                     <div class="text-6xl mb-4">🔍</div>
                     <h3 class="text-3xl mb-2 text-[#00eaff]">RECON</h3>
                     <p class="text-sm opacity-75">OSINT • Subdomain enum • ASN mapping • Nuclei • Custom pipelines</p>
                 </div>
+                
+                <!-- Exploitation -->
                 <div class="neon-panel p-6 text-center hover:scale-105 transition-transform">
                     <div class="text-6xl mb-4">⚒️</div>
                     <h3 class="text-3xl mb-2 text-[#00eaff]">EXPLOITATION</h3>
                     <p class="text-sm opacity-75">Metasploit • Custom exploits • Burp extensions • Zero-day dev</p>
                 </div>
+                
+                <!-- Tools & Automation -->
                 <div class="neon-panel p-6 text-center hover:scale-105 transition-transform">
                     <div class="text-6xl mb-4">⚙️</div>
                     <h3 class="text-3xl mb-2 text-[#00eaff]">TOOLS & AUTOMATION</h3>
@@ -152,22 +207,35 @@
             </div>
         </section>
 
+        <!-- FOOTER / CONTACT -->
         <footer class="mt-auto border-t border-[#00ff9f]/30 pt-8 flex flex-col md:flex-row justify-between items-center text-sm gap-4">
             <div class="flex items-center gap-6">
-                <a href="https://github.com/DOMBNC" target="_blank" class="hover:text-[#00eaff] transition-colors flex items-center gap-2"><span>GITHUB</span> <span class="text-xl">↗</span></a>
-                <a href="https://twitter.com/DOMBNC" target="_blank" class="hover:text-[#00eaff] transition-colors flex items-center gap-2"><span>X / TWITTER</span> <span class="text-xl">↗</span></a>
-                <a href="mailto:dombnc@proton.me" class="hover:text-[#00eaff] transition-colors">dombnc@proton.me</a>
+                <a href="https://github.com/DOMBNC" target="_blank" class="hover:text-[#00eaff] transition-colors flex items-center gap-2">
+                    <span>GITHUB</span>
+                    <span class="text-xl">↗</span>
+                </a>
+                <a href="https://www.facebook.com/HuyPK1134" target="_blank" class="hover:text-[#00eaff] transition-colors flex items-center gap-2">
+                    <span>FACEBOOK</span>
+                    <span class="text-xl">↗</span>
+                </a>
+                <a href="mailto:huytrinh870@gmail.com" class="hover:text-[#00eaff] transition-colors">huytrinh870@gmail.com</a>
             </div>
+            
             <div class="text-[#00ff9f]/40 text-xs">© 2026 DOMBNC • ALL RIGHTS RESERVED • NO TRACE LEFT</div>
+            
             <div onclick="openTerminal()" class="cursor-pointer text-xs flex items-center gap-2 uppercase hover:text-[#00eaff]">
-                PRESS ESC TO ACCESS TERMINAL <span class="px-3 py-1 border border-[#00eaff] text-[#00eaff]">ESC</span>
+                PRESS ESC TO ACCESS TERMINAL
+                <span class="px-3 py-1 border border-[#00eaff] text-[#00eaff]">ESC</span>
             </div>
         </footer>
     </div>
 
     <!-- TERMINAL MODAL -->
-    <div id="terminal-modal" onclick="if(event.target.id === 'terminal-modal') closeTerminal()" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-        <div onclick="event.stopImmediatePropagation()" class="terminal w-full max-w-4xl h-[85vh] rounded-3xl p-8 flex flex-col shadow-2xl">
+    <div id="terminal-modal" onclick="if(event.target.id === 'terminal-modal') closeTerminal()" 
+         class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="terminal w-full max-w-4xl h-[85vh] rounded-3xl p-8 flex flex-col shadow-2xl">
+            
             <div class="flex justify-between border-b border-[#00ff9f]/30 pb-4 mb-6">
                 <div class="flex items-center gap-3">
                     <div class="w-3 h-3 rounded-full bg-red-500"></div>
@@ -177,10 +245,15 @@
                 </div>
                 <div onclick="closeTerminal()" class="cursor-pointer text-[#00eaff] hover:text-white">✕</div>
             </div>
+            
             <div id="terminal-output" class="flex-1 overflow-y-auto text-lg leading-tight pr-6 space-y-2 font-light"></div>
+            
             <div class="flex items-center border-t border-[#00ff9f]/30 pt-4">
                 <span class="text-[#00ff9f] mr-3">$&nbsp;</span>
-                <input id="terminal-input" onkeydown="if(event.key === 'Enter') handleTerminalCommand()" class="flex-1 bg-transparent outline-none text-[#00ff9f] text-lg font-light" autocomplete="off" spellcheck="false" autofocus>
+                <input id="terminal-input" 
+                       onkeydown="if(event.key === 'Enter') handleTerminalCommand()"
+                       class="flex-1 bg-transparent outline-none text-[#00ff9f] text-lg font-light" 
+                       autocomplete="off" spellcheck="false" autofocus>
             </div>
         </div>
     </div>
