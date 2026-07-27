@@ -75,8 +75,6 @@ Một Netrunner đam mê công nghệ với trọng tâm vào an toàn thông ti
 ### 📡 `[ NETWORK_NODES ]` :: `NETWORK_NODES`
 
 *   **[ FB_NODE ]:** [HuyDom05](https://www.facebook.com/HuyDom05)
-*   **[ CTF_DATABASE ]:** [picoCTF - phuonghuy00](https://play.picoctf.org/users/phuonghuy00)
-
 <br>
 <div align="center">
   <img src="https://readme-typing-svg.demolab.com?font=VT323&weight=400&size=20&pause=2000&color=00FFFF&center=true&vCenter=true&width=400&lines=[_DISCONNECTING_];Connection+Lost..." alt="EOF" />
