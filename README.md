@@ -13,7 +13,6 @@ Tôi là một người đam mê công nghệ với trọng tâm đặc biệt v
 *   🎯 **Mục tiêu hiện tại:** Nghiên cứu chuyên sâu về Web Application Security và kỹ thuật khai thác lỗ hổng.
 *   💻 **Kỹ năng chính:** Python, PHP, Docker, WordPress.
 *   🛠️ **Dự án:** Xây dựng tool tự động hóa, custom payloads (`PayLoad_ForMe`), và thiết lập môi trường web.
-*   🚩 **CTF Player:** Thường xuyên luyện tập và giải quyết các thử thách trên [picoCTF](https://play.picoctf.org/users/phuonghuy00).
 *   ⚡ **Sở thích khác:** Chỉnh sửa/độ xe (car modification), kinh doanh các sản phẩm số, và âm nhạc.
 
 ---
