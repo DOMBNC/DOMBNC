@@ -4,7 +4,7 @@
   
   <br><br>
 
-  <h2><b>[ ▓▓▓ DDMBNC • SYSTEM_OPERATIONAL ▓▓▓ ]</b></h2>
+  <h2><b>[ ▓▓▓ D0m8Nc • SYSTEM_OPERATIONAL ▓▓▓ ]</b></h2>
 
   <p><b>UPTIME: 23d 05h 12m | NET: 1.2 Gbps | ACTIVE TASKS: 3</b></p>
   
